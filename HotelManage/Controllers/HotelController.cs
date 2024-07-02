@@ -112,6 +112,19 @@ namespace HotelManage.Controllers
             double sum = request.Values.Sum();
             return Ok(sum);
         }
+        [HttpGet("serch/{id}")]
+        public async Task<IActionResult> serchrecervetion(String id)
+        {
+
+
+            var Hotels = await _hote.serchrequest(id);
+            if (Hotels == null)
+            {
+                return BadRequest("Not found");
+            }
+            return Ok(Hotels);
+        }
+
 
     }
 }
